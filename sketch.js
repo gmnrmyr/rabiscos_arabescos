@@ -22,11 +22,11 @@ let randomScribbleImage;
 window.$fxhashFeatures = {
     "Core bottom draw variation": 8,
     "Core top draw variation": 8,
-    "Diamond draw variation": 7,
+    "Diamond draw variation": 5,
     "Relic variation": 6,
     "Ambient variation": 6,
-    "Dark letter bg variation": 6,
-    "Scribble variation": 6,
+    "Dark letter bg variation": 1,
+    "Scribble variation": 0,
 
     "Relic result": relicImages,
     "Wash": true,
@@ -89,12 +89,6 @@ let ambientVariation = window.$fxhashFeatures["Ambient variation"]
 randomAmbientImage = ambientImages[floor(random(ambientVariation))];
 image(randomAmbientImage, 0, 0);  
 
-
-// Add random relic to the image between available relics draws
-let relicVariation = window.$fxhashFeatures["Relic variation"]
-randomRelicImage = relicImages[floor(random(relicVariation))];
-image(randomRelicImage, 0, 0,  width, height);
-
   // Add random core bottom draw to the image between available core bottom draws
 let coreBottomDrawVariation = window.$fxhashFeatures["Core bottom draw variation"]
 randomCoreBottomDrawImage = coreBottomDrawImages[floor(random(coreBottomDrawVariation))];
@@ -120,7 +114,7 @@ granulateSimple(50);
 
 // Black and white effect
 blacknwhite = random(1);
-if (blacknwhite < 0.1) {
+if (blacknwhite < 0.2) {
     filter(GRAY);
 }
 
@@ -142,3 +136,25 @@ if (val !== undefined) {
 console.log(val);
 }
 }
+//below here - modulation from P_4_1_2_02
+// 150 no w e no h funciona mt bem tb. atual 550/650
+function draw() {
+    var x1 = random(width);
+    var y1 = random(height);
+  
+    var x2 = round(x1 + random(-10, 10));
+    var y2 = round(y1 + random(-10, 10));
+  
+    var w = 550;
+    var h = 650;
+  
+    set(x2, y2, get(x1, y1, w, h));
+  }
+  
+  function keyReleased() {
+    if (key == 's' || key == 'S') saveCanvas(gd.timestamp(), 'png');
+    if (keyCode == DELETE || keyCode == BACKSPACE) {
+      clear();
+      image(img, 0, 0);
+    }
+  }
