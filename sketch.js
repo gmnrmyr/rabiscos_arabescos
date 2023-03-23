@@ -20,10 +20,10 @@ let randomDarkletterbgImage;
 let randomScribbleImage;
 
 window.$fxhashFeatures = {
-    "Core bottom draw variation": 8,
-    "Core top draw variation": 8,
+    "Core bottom draw variation": 4,
+    "Core top draw variation": 5,
     "Diamond draw variation": 5,
-    "Relic variation": 6,
+    "Relic variation": 0,
     "Ambient variation": 6,
     "Dark letter bg variation": 1,
     "Scribble variation": 0,

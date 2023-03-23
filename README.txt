@@ -5,8 +5,6 @@ The code was written in p5.js and the traits are drawn in photoshop with a drwai
 
 There is a small chance to find a black and white toned image in the minting process (20% chance)
 
-
-
 hashtags:
 arabesque
 generative art
