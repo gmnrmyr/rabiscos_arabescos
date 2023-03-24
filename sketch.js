@@ -120,10 +120,6 @@ if (blacknwhite < 0.2) {
 
 }
 
-function windowResized() {
-setup();
-}
-
 function keyPressed() {
 // Press [S] to save frame
 if (keyCode === 83) {
