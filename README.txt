@@ -15,3 +15,10 @@ diamond
 darklettering
 dark ink
 created by Myr | Guilherme Manera 
+
+
+changes maybe: 
+- fxrand between 1 and 20 on grain
+- fxrand between distortion number
+- is bg really blk?
+- add stop on left click?

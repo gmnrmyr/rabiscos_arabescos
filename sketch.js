@@ -66,7 +66,7 @@ function setup() {
 let wash = window.$fxhashFeatures["Wash"];
 if (wash) {
     filter(GRAY);
-    background(2, 255);
+    background(1);
     noStroke();
 
 }
@@ -110,7 +110,7 @@ image(randomDiamondDrawImage, 0, 0,  width, height);
   
 
 // Granulate artwork
-granulateSimple(50);
+granulateSimple(fxrand() *50);
 
 // Black and white effect
 blacknwhite = random(1);
@@ -138,13 +138,20 @@ console.log(val);
 }
 //below here - modulation from P_4_1_2_02
 // 150 no w e no h funciona mt bem tb. atual 550/650
+//15 e 15 funciona bem tb 
+// no var x2 e y2, o numero default era tudo 10 mas curti com 100
 function draw() {
     var x1 = random(width);
     var y1 = random(height);
-  
+
     var x2 = round(x1 + random(-10, 10));
     var y2 = round(y1 + random(-10, 10));
   
+    var x2 = round(x1 + random(fxrand() *-50, fxrand() *50));
+    var y2 = round(y1 + random(fxrand() *-50, fxrand() *50));
+  
+
+
     var w = 550;
     var h = 650;
   
@@ -152,9 +159,8 @@ function draw() {
   }
   
   function keyReleased() {
-    if (key == 's' || key == 'S') saveCanvas(gd.timestamp(), 'png');
-    if (keyCode == DELETE || keyCode == BACKSPACE) {
+
       clear();
       image(img, 0, 0);
-    }
+    
   }
