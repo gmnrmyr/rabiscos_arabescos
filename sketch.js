@@ -53,6 +53,7 @@ function preload() {
 let zoomFactor = 1.1;
 
 function setup() {
+//se adoicionar   noLoop(); aqui, com left arrow inicia a anim.
     Math.random = fxrand;
     randomSeed(fxrand() * 999999);  
     noiseSeed(fxrand() *999999);
@@ -153,10 +154,19 @@ function draw() {
   
     set(x2, y2, get(x1, y1, w, h));
   }
-  
-  function keyReleased() {
 
-      clear();
-      image(img, 0, 0);
-    
+  
+function mousePressed() {
+  loop();
+}
+
+function mouseReleased() {
+  noLoop();
+}
+
+function keyPressed() {
+  if (keyCode === LEFT_ARROW) {
+    loop();
   }
+}
+  
