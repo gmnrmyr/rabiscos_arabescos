@@ -111,7 +111,7 @@ image(randomDiamondDrawImage, 0, 0,  width, height);
   
 
 // Granulate artwork
-granulateSimple(fxrand() *50);
+granulateSimple(fxrand() *1);
 
 // Black and white effect
 blacknwhite = random(1);
@@ -149,8 +149,8 @@ function draw() {
   
 
 
-    var w = 550;
-    var h = 650;
+    var w = 150;
+    var h = 150;
   
     set(x2, y2, get(x1, y1, w, h));
   }

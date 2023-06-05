@@ -1,30 +1,27 @@
-// FUNCTIONALITY:
-Left click - Stop animation
-Left key - Resume animation
-Right click to save image
-
-If you want to reset it to it's initial state, please reload the hash page.
-(right click while it's loading if you really wanna see the first frame) Although, i personally like to stop it after a few frames.
-
 // INFO:
-This project has high inspiration in H.P lovecraft and the misterious middle east arabesque forms. The combination of this concepts has been observed and rotulated by some people as "dark lettering". 
-The code make use of "pre-rendered" or "pre-drawn" images that are combined together trough a simple algorythm. It is also a study for me to understand the best way to work with pre-rendered images. I find this study interestind and valuable to teach me a couple of generative art concepts, same as general javascript / web development fundamentals.
+1639x4000 
 
-The code was written in p5.js and the traits are drawn in photoshop with a drwaing pad.
+This project draws heavy inspiration from H.P Lovecraft and the mysterious Middle Eastern Arabesque forms. The fusion of these concepts has been observed and articulated by some as "dark lettering". 
+The code employs "pre-rendered" or "pre-drawn" images, which are combined via a simple algorithm. This project is also a personal study to understand the best practices when working with pre-rendered images. I find this study intriguing and valuable as it aids in my understanding of various generative art concepts, as well as fundamental principles of JavaScript and web development.
+The code was written in p5.js, and the traits were drawn in Photoshop using a drawing pad.
+There's a small chance to discover a black and white toned image during the minting process.
 
-There is a small chance to find a black and white toned image in the minting process (20% chance)
 
-This project was made for Art Business - a brazilian group focused on teaching about art and NFTs. (artistavisual.com.br/category/art-business) and will be airdrop for those who participate in the group.
+// FUNCTIONALITY:
+- Left click: Stop animation
+- Right click: Resume animation
+- Right click (while saving): Save image
+To reset the animation to its initial state, please reload the page. You can right-click while it's loading if you're interested in seeing the first frame. I personally prefer to stop it after a few frames.
 
-hashtags:
-arabesque
-generative art
-digital art
-nft
-brazilian art
-diamond
-darklettering
-dark ink
-glitch
+// TAGS:
+- Arabesque
+- Generative art
+- Digital art
+- NFT
+- Brazilian art
+- Diamond
+- Dark lettering
+- Dark ink
+- Glitch
 
-// created by Myr | Guilherme Manera 
+// Created by Myr | Guilherme Manera
