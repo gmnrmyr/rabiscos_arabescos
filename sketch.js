@@ -34,128 +34,102 @@ window.$fxhashFeatures = {
 }
 
 function preload() {
-
   img = loadImage("dissolved_lettering.png");
 
-    for (let i = 0; i <= 7; i++) {
-
-
-        diamondDrawImages.push(loadImage(`diamond_draw_${i}.png`));
-        coreTopDrawImages.push(loadImage(`core_top_draw_${i}.png`));
-        coreBottomDrawImages.push(loadImage(`core_bottom_draw_${i}.png`));
-        relicImages.push(loadImage(`relic_${i}.png`));
-        ambientImages.push(loadImage(`ambient_${i}.png`));
-        darkletterbgImages.push(loadImage(`darkletterbg_${i}.png`));
-        scribbleImages.push(loadImage(`scribble_${i}.png`));
-    }
+  for (let i = 0; i <= 7; i++) {
+    diamondDrawImages.push(loadImage(`diamond_draw_${i}.png`));
+    coreTopDrawImages.push(loadImage(`core_top_draw_${i}.png`));
+    coreBottomDrawImages.push(loadImage(`core_bottom_draw_${i}.png`));
+    relicImages.push(loadImage(`relic_${i}.png`));
+    ambientImages.push(loadImage(`ambient_${i}.png`));
+    darkletterbgImages.push(loadImage(`darkletterbg_${i}.png`));
+    scribbleImages.push(loadImage(`scribble_${i}.png`));
+  }
 }
 
 let zoomFactor = 1.1;
 
 function setup() {
-//se adoicionar   noLoop(); aqui, com left arrow inicia a anim.
-    Math.random = fxrand;
-    randomSeed(fxrand() * 999999);  
-    noiseSeed(fxrand() *999999);
-  
-    console.log(width); 
-    console.log(height); 
-    createCanvas(1639, 4000);
-    p5grain.setup();
+  Math.random = fxrand;
+  randomSeed(fxrand() * 999999);
+  noiseSeed(fxrand() * 999999);
 
-    // draw the background
-let wash = window.$fxhashFeatures["Wash"];
-if (wash) {
+  console.log(width);
+  console.log(height);
+  createCanvas(1639, 4000);
+  p5grain.setup();
+
+  let wash = window.$fxhashFeatures["Wash"];
+  if (wash) {
     filter(GRAY);
     background(1);
     noStroke();
+  }
+  fill(100, 100, 1);
 
-}
-    fill(100, 100, 1);
+  let scribbleVariation = window.$fxhashFeatures["Scribble variation"]
+  randomScribbleImage = scribbleImages[floor(random(scribbleVariation))];
+  image(randomScribbleImage, 0, 0);
 
+  let darkletterbgVariation = window.$fxhashFeatures["Dark letter bg variation"]
+  randomDarkletterbgImage = darkletterbgImages[floor(random(darkletterbgVariation))];
+  image(randomDarkletterbgImage, 0, 0);
 
-  
-// Add random scribble to the image between available scribbles
-let scribbleVariation = window.$fxhashFeatures["Scribble variation"]
-randomScribbleImage = scribbleImages[floor(random(scribbleVariation))];
-image(randomScribbleImage, 0, 0);    
+  let ambientVariation = window.$fxhashFeatures["Ambient variation"]
+  randomAmbientImage = ambientImages[floor(random(ambientVariation))];
+  image(randomAmbientImage, 0, 0);
 
-// Add random dark letter bg to the image between available dark letter
-let darkletterbgVariation = window.$fxhashFeatures["Dark letter bg variation"]
-randomDarkletterbgImage = darkletterbgImages[floor(random(darkletterbgVariation))];
-image(randomDarkletterbgImage, 0, 0);  
-  
-// Add random ambient to the image between available ambients draws
-let ambientVariation = window.$fxhashFeatures["Ambient variation"]
-randomAmbientImage = ambientImages[floor(random(ambientVariation))];
-image(randomAmbientImage, 0, 0);  
+  let coreBottomDrawVariation = window.$fxhashFeatures["Core bottom draw variation"]
+  randomCoreBottomDrawImage = coreBottomDrawImages[floor(random(coreBottomDrawVariation))];
+  console.log("Core bottom draw: " + randomCoreBottomDrawImage);
+  image(randomCoreBottomDrawImage, 0, 0, width, height);
 
-  // Add random core bottom draw to the image between available core bottom draws
-let coreBottomDrawVariation = window.$fxhashFeatures["Core bottom draw variation"]
-randomCoreBottomDrawImage = coreBottomDrawImages[floor(random(coreBottomDrawVariation))];
-console.log("Core bottom draw: " + randomCoreBottomDrawImage);
-image(randomCoreBottomDrawImage, 0, 0,  width, height);
+  let coreTopDrawVariation = window.$fxhashFeatures["Core top draw variation"]
+  randomCoreTopDrawImage = coreTopDrawImages[floor(random(coreTopDrawVariation))];
+  image(randomCoreTopDrawImage, 0, 0, width, height);
 
+  let diamondDrawVariation = window.$fxhashFeatures["Diamond draw variation"]
+  randomDiamondDrawImage = diamondDrawImages[floor(random(diamondDrawVariation))];
+  image(randomDiamondDrawImage, 0, 0, width, height);
 
-// Add random core top draw to the image between available core top draws
-let coreTopDrawVariation = window.$fxhashFeatures["Core top draw variation"]
-randomCoreTopDrawImage = coreTopDrawImages[floor(random(coreTopDrawVariation))];
-image(randomCoreTopDrawImage, 0, 0,  width, height);
+  image(img, 0, 0);
 
-// Add random diamond draw to the image between available diamond draws
-let diamondDrawVariation = window.$fxhashFeatures["Diamond draw variation"]
-randomDiamondDrawImage = diamondDrawImages[floor(random(diamondDrawVariation))];
-image(randomDiamondDrawImage, 0, 0,  width, height);  
-  
-    image(img, 0, 0);   
-  
+  granulateSimple(fxrand() * 1);
 
-// Granulate artwork
-granulateSimple(fxrand() *1);
-
-// Black and white effect
-blacknwhite = random(1);
-if (blacknwhite < 0.2) {
+  blacknwhite = random(1);
+  if (blacknwhite < 0.2) {
     filter(GRAY);
-}
+  }
 
+  // Add fxpreview here
+  fxpreview();
 }
 
 function keyPressed() {
-// Press [S] to save frame
-if (keyCode === 83) {
-saveCanvas('export.png');
-}
+  if (keyCode === 83) {
+    saveCanvas('export.png');
+  }
 }
 
 function report(val) {
-if (val !== undefined) {
-console.log(val);
-}
-}
-//below here - modulation from P_4_1_2_02
-// 150 no w e no h funciona mt bem tb. atual 550/650
-//15 e 15 funciona bem tb 
-// no var x2 e y2, o numero default era tudo 10 mas curti com 100
-function draw() {
-    var x1 = random(width);
-    var y1 = random(height);
-
-    var x2 = round(x1 + random(-10, 10));
-    var y2 = round(y1 + random(-10, 10));
-  
-    var x2 = round(x1 + random(fxrand() *-50, fxrand() *50));
-    var y2 = round(y1 + random(fxrand() *-50, fxrand() *50));
-  
-
-
-    var w = 150;
-    var h = 150;
-  
-    set(x2, y2, get(x1, y1, w, h));
+  if (val !== undefined) {
+    console.log(val);
   }
+}
 
-  
+function draw() {
+  var x1 = random(width);
+  var y1 = random(height);
+
+  var x2 = round(x1 + random(fxrand() * -50, fxrand() * 50));
+  var y2 = round(y1 + random(fxrand() * -50, fxrand() * 50));
+
+  var w = 150;
+  var h = 150;
+
+  set(x2, y2, get(x1, y1, w, h));
+}
+
 function mousePressed() {
   loop();
 }
@@ -169,4 +143,3 @@ function keyPressed() {
     loop();
   }
 }
-  
