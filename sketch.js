@@ -101,8 +101,7 @@ function setup() {
     filter(GRAY);
   }
 
-  // Add fxpreview here
-  fxpreview();
+
 }
 
 function keyPressed() {
@@ -128,6 +127,9 @@ function draw() {
   var h = 150;
 
   set(x2, y2, get(x1, y1, w, h));
+
+    // Add fxpreview here
+    fxpreview();
 }
 
 function mousePressed() {
