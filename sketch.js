@@ -20,18 +20,16 @@ let randomDarkletterbgImage;
 let randomScribbleImage;
 
 window.$fxhashFeatures = {
-    "Core bottom draw variation": 4,
-    "Core top draw variation": 5,
-    "Diamond draw variation": 5,
-    "Relic variation": 0,
-    "Ambient variation": 6,
-    "Dark letter bg variation": 1,
-    "Scribble variation": 0,
-
-    "Relic result": relicImages,
-    "Wash": true,
-
-}
+  "Core bottom draw variation": 4,
+  "Core top draw variation": 5,
+  "Diamond draw variation": 5,
+  "Relic variation": 0,
+  "Ambient variation": 6,
+  "Dark letter bg variation": 1,
+  "Scribble variation": 0,
+  "Relic result": relicImages,
+  "Wash": true,
+};
 
 function preload() {
   img = loadImage("dissolved_lettering.png");
@@ -67,28 +65,28 @@ function setup() {
   }
   fill(100, 100, 1);
 
-  let scribbleVariation = window.$fxhashFeatures["Scribble variation"]
+  let scribbleVariation = $fx.getParam("scribble_variation");
   randomScribbleImage = scribbleImages[floor(random(scribbleVariation))];
   image(randomScribbleImage, 0, 0);
 
-  let darkletterbgVariation = window.$fxhashFeatures["Dark letter bg variation"]
+  let darkletterbgVariation = $fx.getParam("darkletterbg_variation");
   randomDarkletterbgImage = darkletterbgImages[floor(random(darkletterbgVariation))];
   image(randomDarkletterbgImage, 0, 0);
 
-  let ambientVariation = window.$fxhashFeatures["Ambient variation"]
+  let ambientVariation = $fx.getParam("ambient_variation");
   randomAmbientImage = ambientImages[floor(random(ambientVariation))];
   image(randomAmbientImage, 0, 0);
 
-  let coreBottomDrawVariation = window.$fxhashFeatures["Core bottom draw variation"]
+  let coreBottomDrawVariation = $fx.getParam("core_bottom_draw_variation");
   randomCoreBottomDrawImage = coreBottomDrawImages[floor(random(coreBottomDrawVariation))];
   console.log("Core bottom draw: " + randomCoreBottomDrawImage);
   image(randomCoreBottomDrawImage, 0, 0, width, height);
 
-  let coreTopDrawVariation = window.$fxhashFeatures["Core top draw variation"]
+  let coreTopDrawVariation = $fx.getParam("core_top_draw_variation");
   randomCoreTopDrawImage = coreTopDrawImages[floor(random(coreTopDrawVariation))];
   image(randomCoreTopDrawImage, 0, 0, width, height);
 
-  let diamondDrawVariation = window.$fxhashFeatures["Diamond draw variation"]
+  let diamondDrawVariation = $fx.getParam("diamond_draw_variation");
   randomDiamondDrawImage = diamondDrawImages[floor(random(diamondDrawVariation))];
   image(randomDiamondDrawImage, 0, 0, width, height);
 
@@ -100,8 +98,6 @@ function setup() {
   if (blacknwhite < 0.2) {
     filter(GRAY);
   }
-
-
 }
 
 function keyPressed() {
@@ -128,8 +124,8 @@ function draw() {
 
   set(x2, y2, get(x1, y1, w, h));
 
-    // Add fxpreview here
-    fxpreview();
+  // Add fxpreview here
+  fxpreview();
 }
 
 function mousePressed() {
